@@ -1,7 +1,7 @@
 angular.module('bniDirect.MenuCtrl', [])
 
-.controller('MenuCtrl', function($scope, $state, $ionicHistory) {
-
+.controller('MenuCtrl', function($scope, $state, $ionicHistory, $ionicPopup,IonicClosePopupService) {
+  $scope.data = {};
   $scope.hideSidemenuBackButton = true;
   var topLevelMenu = $scope.menuList = [
     {
@@ -37,7 +37,7 @@ angular.module('bniDirect.MenuCtrl', [])
       name: 'Transfer Management',
       child: [
         {
-          id: 9,
+          id: 8,
           name: 'Inhouse Transfer',
           url : 'app.inhouseTransfer',
           child: [],
@@ -81,10 +81,33 @@ angular.module('bniDirect.MenuCtrl', [])
   };
 
   $scope.goTo = function(path){
+
     $ionicHistory.nextViewOptions({
       disableBack: true
     });
-    $state.go(path);
+
+    var mPinPopup = $ionicPopup.alert({
+      template: '<input type = "password" ng-model = "data.model">',
+      title: 'M-PIN',
+      subTitle: 'INPUT YOUR M-PIN',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            if (!$scope.data.model) {
+              //don't allow the user to close unless he enters model...
+              e.preventDefault();
+            }
+            else{$state.go(path);$scope.data.model = null;$scope.closeDrawer()}
+          }
+        }
+      ]
+    });
+    IonicClosePopupService.register(mPinPopup);
+
   };
 
 });

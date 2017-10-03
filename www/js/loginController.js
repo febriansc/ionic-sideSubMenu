@@ -1,6 +1,6 @@
 angular.module('bniDirect.LoginCtrl', [])
 
-  .controller('LoginCtrl', function ($scope, $ionicSideMenuDelegate,$state,$ionicHistory,$ionicPopup) {
+  .controller('LoginCtrl', function ($scope, $ionicSideMenuDelegate,$state,$ionicHistory,$ionicPopup,IonicClosePopupService) {
     $ionicSideMenuDelegate.canDragContent(false);
 
     // Form data for the login modal
@@ -16,10 +16,11 @@ angular.module('bniDirect.LoginCtrl', [])
         $state.go('app.landingPage');
       }
       else{
-        $ionicPopup.alert({
+        var failedAlert = $ionicPopup.alert({
           title: 'FAILED',
           subTitle: 'CHECK YOUR USERNAME AND PASSWORD'
         });
+        IonicClosePopupService.register(failedAlert);
       }
     };
 

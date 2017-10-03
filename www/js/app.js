@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module(
-  'bniDirect',['ionic',
+  'bniDirect',['ionic','ionic.closePopup','ionic.contrib.drawer',
     'bniDirect.LoginCtrl',
     'bniDirect.MenuCtrl',
     /*'bniDirect.LandingPageCtrl',*/
