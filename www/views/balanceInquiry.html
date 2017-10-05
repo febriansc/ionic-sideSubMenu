@@ -1,5 +1,42 @@
 <ion-view view-title="Balance Inquiry">
   <ion-content>
-    <h1>Balance Inquiry</h1>
+    <div class="card round-card">
+      <div class="item item-divider">
+        <h3>Balance Inquiry Search</h3>
+      </div>
+
+      <div class="item item-text-wrap">
+
+        <div class="list list-inset">
+          <label class="item item-input item-select">
+            <div class="input-label"></div>
+            <select>
+              <option ng-repeat="account in selectAccount">{{account.text}}</option>
+            </select>
+          </label>
+
+          <!--<div ng-if="selectAccount.text === 'Single Account'">-->
+            <label class="item item-input round-text-input">
+              <input type="search" placeholder="Account Number/Account Name (Currency)">
+            </label>
+          <!--</div>-->
+
+          <!--<div ng-if="selectAccount.text === 'Multiple Account'">-->
+            <label class="item item-input item-select">
+              <div class="input-label"></div>
+              <select>
+                <option ng-repeat="accountType in selectAccountType">{{accountType.text}}</option>
+              </select>
+            </label>
+          <!--</div>-->
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="list list-inset">
+      <button class="button button-full round-button" ng-click="goToDetailPage()">Show</button>
+    </div>
   </ion-content>
 </ion-view>

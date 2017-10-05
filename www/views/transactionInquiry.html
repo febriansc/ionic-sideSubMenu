@@ -1,5 +1,47 @@
 <ion-view view-title="transaction Inquiry">
   <ion-content>
-    <h1>transaction Inquiry</h1>
+    <div class="card round-card">
+      <div class="item item-divider">
+        <h3>Transaction Inquiry Search</h3>
+      </div>
+
+      <div class="item item-text-wrap">
+
+        <label>
+          <h4>Posting Date</h4>
+        </label>
+
+        <div class="list list-inset row">
+          <label class="col col-40 item item-input round-text-input">
+            <input type="text" ng-click="openDatePicker()" placeholder="Start Date"></input>
+          </label>
+          <label class="col col-offset-10 col-40 item item-input round-text-input">
+            <input type="text" ng-click="openDatePicker()" placeholder="End date"></input>
+          </label>
+        </div>
+
+        <label>
+          <h4>Transaction Type</h4>
+        </label>
+
+        <div class="list list-inset">
+
+          <label class="item item-input item-select">
+            <div class="input-label"></div>
+            <select>
+              <option>All</option>
+            </select>
+          </label>
+
+          <label class="item item-input round-text-input">
+            <input type="search" placeholder="Account Number/Account Name (Currency)">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="list list-inset">
+      <button class="button button-full round-button" ng-click="goToSummaryPage()">Show</button>
+    </div>
   </ion-content>
 </ion-view>
